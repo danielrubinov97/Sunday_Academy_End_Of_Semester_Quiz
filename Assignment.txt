@@ -1,0 +1,20 @@
+Designed for a select few students:
+
+Make a new directory for this quiz
+Make a new main.cc file
+Include library for cin and cout
+Include library for strings
+
+You work as at Google as a software engineer. Everyone at google has a different rate of pay and works a different amount of hours per week. Make a program that allows workers to input their hourly rate of pay and hours worked per week to calculate the amount of money they earn per week.
+
+*Note, if they work more than 40 hours per week. For every extra hour, they earn 1.5x their usual rate.
+
+ID, First Name, Last Name, hourly rate, and hours worked. Output should be weekly pay (AKA the amount of money they should see on their checks every week) NOT counting tax.
+
+EXTRA CREDIT!
+	Create a file to keep track of every employee that uses your software to calulcate their wage. Use the library fstream to write and log down uses of every employee. Add so that if they return to use the program their ID is recognized. No two employees can have the same ID but employees may have the same first and last name. Such as John Smith.
+
+HINT: Formula is IF MORE THAN 40 HOURS (hourly_rate * 40) + ((hourly_rate * 1.5) * (hours_worked - 40))
+
+Formula if hours worked is LESS than 40: (hourly rate * hours_worked)
+
