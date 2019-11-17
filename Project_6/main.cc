@@ -170,7 +170,7 @@ int main(){
 	int j = 0;
 	//Pull the number of total people in the file.
 	int numberOfPeople;
-	input_file >> numberOfPeople;
+	input_file >> numberOfPeople; //Pulls the number of people from the file. Open the data file to see what's in it. The first thing you see is the number of people.
 	for(i = 0; i < numberOfPeople; i++){
 		input_file >> First[i];
 		input_file >> Last[i];
@@ -218,11 +218,9 @@ int main(){
 		calculateWeekly(hoursYouGoToSchool[i], hoursYouSleep[i], hoursYouPlayGames[i]);
 	}
 
-	//Notice how the int main is simplier and cleaner. Of course a lot more work can go into it to make it even nicer, but you could look into that.
-	
-	//The next goal is to add some storage to this code. We need to be able to store some of this data so we can catalog it.
-
-	//We will also introduce arrays and strings so that we could add some names to your data. (To who does this data belong?)
+	//Notice we no longer need to ask for inputs so the code is a lot cleaner. We could get rid of all the ask for hour functions.
+	//But what happens when we will need to add more people?
+	//That is for project 7.
 
 	return 0;
 }
