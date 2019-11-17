@@ -1,4 +1,4 @@
-//Using the code from Project_2 we will now learn about 
+//Using the code from Project_2 we will now learn about if statements
 
 #include<iostream>
 
