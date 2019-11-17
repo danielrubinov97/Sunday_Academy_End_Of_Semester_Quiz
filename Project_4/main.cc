@@ -1,4 +1,4 @@
-//Using the code from Project_3 we will now learn about strings and loops
+//Using the code from Project_3 we will now learn about loops
 
 //Strings are variable types like ints
 //Strings are just a collection of characters. These characters can be combined into words and sentences.
