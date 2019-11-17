@@ -10,6 +10,8 @@
 
 using namespace std;
 
+ifstream input_file("data", ios::in);
+
 void askSchoolHours(int &hours){ //Hours here are the hoursYouGoToSchool
 	//We will use a variable to check for validity of the input.
 	//If the input is invalid, the loop will re-run to let the person try again.
@@ -152,56 +154,69 @@ void calculateWeekly(int &hoursSchool, int &hoursSleep, int &hoursPlay){ //& is 
 }
 
 int main(){
-	//VARIABLES EXIST IN SCOPES
-	//These three variables only exist inside int main. Any function we make above or below the int main will not have access to the information inside the variables.
-	//There are a few ways we could get around this problem. The worst one is to move these variables above the int main. These variables will become global variables and that isn't safe.
-	//Another option is to pass them along to the function. &Give the function the power to write to them.
-	int hoursYouGoToSchool;
-	int hoursYouSleep;
-	int hoursYouPlayGames;
+	//Here is where we will read the data file.
+	//50 variables for 50 people. Each one is designed for one person. EXAMPLE hoursYouGoToSchool[0] is the amount of hours the first person goes to school.
+	int hoursYouGoToSchool[50];
+	int hoursYouSleep[50];
+	int hoursYouPlayGames[50];
+	//Declaring variables for storing names.
+	string First[50];
+	string Last[50];
+	cout << "------------" << endl;
+	cout << "Pulling data" << endl;
+	cout << "------------" << endl;
+	//Two counters i and j.
+	int i = 0;
+	int j = 0;
+	//Pull the number of total people in the file.
+	int numberOfPeople;
+	input_file >> numberOfPeople;
+	for(i = 0; i < numberOfPeople; i++){
+		input_file >> First[i];
+		input_file >> Last[i];
+		input_file >>hoursYouGoToSchool[i];
+		input_file >> hoursYouSleep[i];
+		input_file >> hoursYouPlayGames[i];
+	}
+
 	//Introduction:
 	cout << "Welcome to my program!" << endl;
 	
-	askSchoolHours(hoursYouGoToSchool);
-
-	cout << endl << "-------------------" << endl;//Just to make the output look nicer.
-
-	askSleepHours(hoursYouSleep);
-
-	cout << endl << "-------------------" << endl;
-	
-	askPlayingHours(hoursYouPlayGames);
-
-	cout << endl << "------------------------------------" << endl;
-
-	cout << "Okay so, you go to school for " << hoursYouGoToSchool << " hour(s) per day." << endl;
-
-	cout << "Okay so, you sleep for: " << hoursYouSleep << " hour(s) per day." << endl;
-	
-	cout << "Okay so, you play for: " << hoursYouPlayGames << " hour(s) per day." << endl;
-
-	cout << endl;
+	//Print:
+	for(i = 0; i < numberOfPeople; i++){
+		cout << First[i] << " ";
+		cout << Last[i] << " "; 
+		cout << hoursYouGoToSchool[i] << " ";
+		cout << hoursYouSleep[i] << " ";
+		cout << hoursYouPlayGames[i] << endl;
+				
+	}
 
 	int total_amount_of_hours_per_day;
 
 	cout << "Remember, there are only 24 hours in a day! So if you spend more than 24 hours during the day, sleeping, going to school and playing games, something is off." << endl;
 	cout << "So let's check that." << endl;
-	total_amount_of_hours_per_day = hoursYouGoToSchool + hoursYouPlayGames + hoursYouSleep;
-	cout << "The total amount of hours you spend a day, sleeping, going to school and playing games is: " << total_amount_of_hours_per_day << "." << endl;
+	
+	for(i = 0; i < numberOfPeople; i++){
+		total_amount_of_hours_per_day = hoursYouGoToSchool[i] + hoursYouPlayGames[i] + hoursYouSleep[i];
+		cout << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "The total amount of hours " << First[i] << " " << Last[i] << " spends a day, sleeping, going to school and playing games is: " << total_amount_of_hours_per_day << "." << endl;
 
-	if(total_amount_of_hours_per_day > 24){ //We could do another loop for this one, but we will have to loop everything from the beginning of the code to this point.
-	//Another solution is that we could also do this check a bit earlier or even check as we go along. For example if the first two inputs already exceed 24 hours that's a problem.
-	//Lastly, there is a way more elegant solution, but this solutions requires functions. Which we will do for the next project.
-		cout << "No good! Something doesn't add up. Please try again!" << endl;
-		return 1;
+		if(total_amount_of_hours_per_day > 24){ //We could do another loop for this one, but we will have to loop everything from the beginning of the code to this point.
+		//Another solution is that we could also do this check a bit earlier or even check as we go along. For example if the first two inputs already exceed 24 hours that's a problem.
+		//Lastly, there is a way more elegant solution, but this solutions requires functions. Which we will do for the next project.
+			cout << "No good! Something doesn't add up. Please try again!" << endl;
+			return 1;
+		}
+		else{
+			cout << "Looks good! The math makes sense." << endl;
+		}
+
+		cout << endl;
+		cout << "For: " << First[i] << " " << Last[i] << endl;
+		calculateWeekly(hoursYouGoToSchool[i], hoursYouSleep[i], hoursYouPlayGames[i]);
 	}
-	else{
-		cout << "Looks good! The math makes sense." << endl;
-	}
-
-	cout << endl;
-
-	calculateWeekly(hoursYouGoToSchool, hoursYouSleep, hoursYouPlayGames);
 
 	//Notice how the int main is simplier and cleaner. Of course a lot more work can go into it to make it even nicer, but you could look into that.
 	
