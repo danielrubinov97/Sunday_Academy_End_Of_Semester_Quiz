@@ -97,13 +97,16 @@ int main(){
 	}
 
 	cout << endl;
-	
+
 	cout << "So, in total you go to school for: " << hoursYouGoToSchool * 5 << " hour(s) per week." << endl; //Notice here we are doing a mathematical operation and
 	//multiplying what ever is inside our variable by 5, because there are 5 school days a week.
 
 	cout << "So, in total you sleep for: " << hoursYouSleep * 7 << " hours(s) per week." << endl;
 
 	cout << "So, in total you play games for: " << hoursYouPlayGames * 7 << " hour(s) per week." << endl;
+
+	//Notice that if a person entered something wrong the whole program ends. Next project we will build upon this and we will allow people to re-enter values so they won't have to re=run the program.
+	//We could also keep track of how many times that person retried entering the correct value. If they keep not putting the correct responses we could end the program saying that they really don't understand something.
 
 	return 0;
 }
